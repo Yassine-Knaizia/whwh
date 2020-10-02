@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
     key: String,
     myToDoList: [],
     companyToDoList: [],
-    type: String
+    type: { type: String, default: "user" }
   },
   {
     timestamps: true,

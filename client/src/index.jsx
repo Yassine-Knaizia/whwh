@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Home from './components/Home.jsx'
 import Todo from './components/Todo.jsx'
 import Chat from './components/Chat.jsx'
-import Nav from './components/Nav.jsx'
+import Land from './components/Landingpage.jsx'
 
 import { BrowserRouter as Router , Switch , Route } from 'react-router-dom'
 class App extends React.Component{
@@ -15,7 +15,7 @@ class App extends React.Component{
             <div>
         <Router>
         <div>
-            <Nav /> 
+            <Land /> 
             <Switch>
                 <Route path='/home' exact component={Home}/>
                 <Route path='/chat' component={Chat}/>

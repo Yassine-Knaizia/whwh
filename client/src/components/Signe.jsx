@@ -114,4 +114,6 @@ class Signe extends React.Component{
           )
     }
 }
+
+
 export default Signe;
