@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import SignUpCompany from "./SignUpCompany.jsx";
 import { Link, link } from 'react-router-dom'
-
+import Tasks from "./Tasks.jsx"
 class LoginCompany extends React.Component {
  
     constructor() {
@@ -24,7 +24,7 @@ class LoginCompany extends React.Component {
       }
       send() {
         axios.post("/login", this.state).then((res) => {
-          axios.post("/update" , this.state.name)
+          axios.post("/api/user/update" , this.state.name)
         }).then(()=>{
           this.setState({login : true})
         });
@@ -37,7 +37,7 @@ class LoginCompany extends React.Component {
               <div>
             <p>User's Login</p>
             <label>Enter your name</label>
-            <input
+            <input className="form-controle"
               type="text"
               name="name"
               value={this.state.name}
@@ -56,27 +56,10 @@ class LoginCompany extends React.Component {
               <a onClick={this.goToSingUp.bind(this)}>sign up</a>
             </p>
             </div> : <SignUpCompany/> }
-          </div> : <NewNav/> }
+          </div> : <Tasks/> }
           </div>
         );
       }
 }
-function NewNav(){
-  return  <div className="nav-bar"> 
-  <nav>
-  <a className="logo" href="#"> logo</a>
-  <ul className="nav">
-  <Link to="/home">
-         <li><a>Home</a></li>
-      </Link>
-      <Link to="/todo">
-         <li ><a>Todo</a></li>
-      </Link>
-      <Link to="/chat">
-         <li><a>chat</a></li>
-      </Link>
-  </ul>
-</nav>
-</div>
-}
+
 export default LoginCompany;

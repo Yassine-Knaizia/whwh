@@ -11,22 +11,22 @@ class Todo extends React.Component {
       friend: "",
       tosend: "",
       myName: "",
-      type: "",
+      companyTodos:[],
+      change : "DC"
     };
+    // this.getTodoCompany = this.getTodoCompany.bind(this);
     this.getFriends = this.getFriends.bind(this);
     this.getTodo = this.getTodo.bind(this);
     this.sendTodo = this.sendTodo.bind(this);
-    this.typeOfUser = this.typeOfUser.bind(this);
+    // this.typeOfUser = this.typeOfUser.bind(this);
   }
-  // get the type from the database
-  typeOfUser() {
-    $.ajax({
-      url: `/api/users/getAll`,
-      type: "get",
-      success: (res) => {
-        if(res){ this.setState({ type: res });}
-      },
-    });
+  changeCompany(){
+    axios.post("/api/user/changeKey" , {newKey : this.state.change})
+  }
+
+  handlechange(e){
+   console.log(this.state.change)
+    this.setState({[e.target.name] : e.target.value})
   }
   // get the list of the friends 
   getFriends() {
@@ -44,17 +44,16 @@ class Todo extends React.Component {
       url: `/api/users/getuser`,
       type: "get",
       success: (res) => {
-        console.log(res);
+        console.log("this is element ",res);
         var newTodo = [];
         for (var i = 0; i < res[0].myToDoList.length; i++) {
           newTodo.push(
-            <li key={i}>
+            <li key={i} id="liColor" onClick={this.done.bind(this , i )}>
               {res[0].myToDoList[i]}
-              <button onClick={this.done.bind(this, i)}>done</button>
             </li>
           );
         }
-
+        this.setState({companyTodos : res[0].companyToDoList})
         this.setState({ myTodos: newTodo });
         this.setState({ myName: res[0].name });
       },
@@ -68,26 +67,40 @@ class Todo extends React.Component {
   componentDidMount() {
     this.getFriends();
     this.getTodo();
-    this.typeOfUser();
   }
   //push todo inside the data base 
   sendTodo() {
     axios.post("/api/users/pushTodo", { todo: this.state.todo }).then(() => {
-      this.componentDidMount();
+      this.getTodo();
     });
   }
   // inser the todo in the state and friend that you will send to him the 
   // todo 
   putTodo(e) {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.todo);
   }
   // insert friend that you will send to him the todo in state 
   selectFriend(e) {
     this.setState({ friend: e.target.value });
-    console.log(this.state.friend);
   }
 
+
+  done() {
+    var e = document.getElementById("liColor");
+    var c = window.getComputedStyle(e).backgroundColor;
+    if (c === "rgb(252, 250, 250)") {
+    document.getElementById("liColor").style.background = "#66FF66";
+} else{
+    document.getElementById("liColor").style.background = "#FCFAFA";
+}
+  }
+
+
+  delete(){
+    axios.post("/api/delete").then(()=>{
+      this.componentDidMount()
+      })
+   }
   Tosend(e) {
     this.setState({ toSend: e.target.value });
     console.log(this.state.toSend);
@@ -99,13 +112,15 @@ class Todo extends React.Component {
   render() {
     var users = [];
         for (var i = 0; i < this.state.friends.length; i++) {
-      users.push(<option key={i}>{this.state.friends[i].name} </option>);
+      users.push(<option key={i} >{this.state.friends[i].name} </option>);
     }
-    console.log("rendered ..");
-    console.log(this.state);
+
+    var companytodosforme = []
+    for(var i = 0 ; i < this.state.companyTodos.length ; i++){
+    companytodosforme.push(<li key={i}>{this.state.companyTodos[i]}</li>)
+    }
     return (
       <div>
-        {this.state.type === "user" ? (
           <div>
             <div className="myTodo">
               <p>
@@ -123,7 +138,12 @@ class Todo extends React.Component {
             </div>
             <div className="todoList">
               <ul> {this.state.myTodos} </ul>
+              <button onClick={this.delete.bind(this)}>Delete</button>
             </div>
+            <div className="companyTodo">
+            <h1>rgtjdf</h1>
+          <ul> {companytodosforme} </ul>
+          </div>
             <div className="friendAdd">
               <p>
                 Choose HERE :
@@ -144,10 +164,11 @@ class Todo extends React.Component {
               ></input>
               <button onClick={this.Post.bind(this)}>GET HIM!</button>
             </div>
+            <div>
+              <input name="change" onChange={this.handlechange.bind(this)}></input>
+              <button onClick={this.changeCompany.bind(this)}>change key of company</button>
+            </div>
           </div>
-        ) : (
-          <Tasks />
-        )}
       </div>
     );
   }

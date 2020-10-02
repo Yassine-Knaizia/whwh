@@ -31,37 +31,43 @@ app.post("/api/users/sendMessage", (req, res) => {
   });
 });
 
-app.get('/api/users/employee' , (req,res)=>{
-  Name.findOne({key : "abc"} , function(err,result){
-    Company.find({name : result.hashem} , function(err , data){
-      if(data.length){
-      User.find({key : data[0].key }, function(err , employees){
-        res.send(employees);
-      })}
-    
-    // res.send(data[0].key)
+app.post("/api/user/add",(req , res)=>{
+  console.log(req.body)
+  Name.findOne({key : "abc"} , function(err , data){
+    Company.updateOne({name : data.hashem} , { $push: { employee: req.body.newE } },
+      function (err, result) {
+        if (err) console.log(err);
+        res.send("check")
+      })
   })
-  // res.send(result.hashem)
 })
-})
-
 
 app.post('/api/users/giveOrder',(req,res)=>{
+  console.log(req.body)
   User.updateOne(
     { name: req.body.nameOfEmloyee },
     { $push: { companyToDoList: req.body.taskForEmployee } },
     function (err, result) {
       if (err) console.log(err);
+      res.send("check")
     }
-  );
-  Name.find({} , function(err , result){
+  )
+  Name.findOne({key:"abc"} , function(err , result){
     Company.updateOne(
-      { name: result[0].name },
+      { name: result.hashem },
       { $push: { todos: {name : req.body.nameOfEmloyee , todo : req.body.taskForEmployee} } },
       function (err, result) {
         if (err) console.log(err);
       }
     );
+  })
+})
+
+app.get("/api/users/archive" , (req , res)=>{
+  Name.findOne({key : "abc"} , function(err ,data){
+    Company.findOne({name : data.hashem} , function(err , result){
+      res.send(result.todos)
+    })
   })
 })
 
@@ -79,14 +85,14 @@ app.get('/api/users/getAll' , (req,res)=>{
   })
 })
 
-app.get("/getall", function (req, res) {
-  User.find({}, function (error, result) {
-    if (error) console.log("this is error ====>", error);
-    res.send(result);
-  });
-});
+// app.get("/getall", function (req, res) {
+//   User.find({}, function (error, result) {
+//     if (error) console.log("this is error ====>", error);
+//     res.send(result);
+//   });
+// });
 
-app.post("/update", (req, res) => {
+app.post("/api/user/update", (req, res) => {
   var newName = Object.keys(req.body)[0];
   Name.updateOne({ key: "abc" }, { $set: { hashem: newName } }, function (
     err,
@@ -106,10 +112,73 @@ app.post("/api/users/pushTodo", (req, res) => {
       { $push: { myToDoList: req.body.todo } },
       function (err, result) {
         if (err) console.log(err);
+        res.send(true)
       }
     );
   });
 });
+app.post('/api/getinfo', (req, res) => {
+  User.findOne({ name: req.body.Speciffic }, function (err, result) {
+    res.send({ myToDoList: result.myToDoList, companyToDoList: result.companyToDoList })
+  })
+})
+
+app.get("/api/users/getCompany", (req, res) => {
+  Name.find({ key: "abc" }, function (err, data) {
+    User.findOne({ name: data[0].hashem }, function (err, result) {
+      res.send(result.companyToDoList);
+    });
+  });
+});
+
+app.post("/api/user/changeKey" , (req , res)=>{
+  Name.findOne({key : "abc"} , function(err,data){
+    User.updateOne({name : data.hashem} , {$set : {key : req.body.newKey }} , function (
+      err,
+      result
+    ) {
+      if (err) console.log(err);
+    })
+  })
+})
+app.post("/api/user/fire" , (req,res)=>{
+
+  Name.findOne({key : "abc"} , function(err , data){
+    Company.findOne({name : data.hashem} , function(err , result){
+      var arrayOfEmployees = result.employee 
+      var rest = []
+      for(var i = 0 ; i < arrayOfEmployees.length ; i++){
+         if(arrayOfEmployees[i] !== req.body.newF ){
+           rest.push(arrayOfEmployees[i])
+         }
+      }
+      Company.updateOne({ name : data.hashem } , {$set : {employee : rest}} ,function (
+        err,
+        result
+      ) {
+        if (err) console.log(err);
+      })
+    })
+  })
+})
+
+app.post("/api/delete",(req,res)=>{
+  Name.find({key:"abc"},(err,result)=>{
+    console.log(result)
+    // focus with the result you are geting an array so you need to put result[0] i fix it for you 
+    User.updateOne({name:result[0].hashem},{$set:{ myToDoList:[] } },function(err,data){
+      console.log(data)
+      err?console.log(err):res.send(data)
+    } )
+  })
+})
+app.get('/api/users/employee' , (req,res)=>{
+  Name.findOne({key : "abc"} , function(err,result){
+    Company.find({name : result.hashem} , function(err , data){
+        res.send(data[0].employee)
+  })
+})
+})
 
 app.get("/api/users/getFriends", (req, res) => {
   Name.find({ key: "abc" }, function (err, data) {
@@ -140,6 +209,12 @@ app.get("/api/users/getuser", (req, res) => {
     });
   });
 });
+
+app.get("/api/users/getConnected" , (req , res)=>{
+  Name.findOne({key : "abc"} , function(err , result){
+    res.send(result.hashem)
+  })
+})
 
 app.post('/login', async (req, res) => {
   try {

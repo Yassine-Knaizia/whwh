@@ -7,6 +7,7 @@ const CompanySchema = new mongoose.Schema(
     name: String,
     password: String,
     imageUrl: String,
+    employee: [],
     key: String,
     todos: [
       {

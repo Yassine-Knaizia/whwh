@@ -17,8 +17,8 @@ class SignUpUser extends React.Component{
     }
     submit(e){
         e.preventDefault();
-        const {name,password,image,key}=this.state
-        axios.post('/signup/user',{name,password,image,key})
+        const {name,password,imageUrl,key}=this.state
+        axios.post('/signup/user',{name,password,imageUrl,key})
         var login = !this.state.toLogin ; 
         this.setState({toLogin : login}) 
     }
@@ -35,7 +35,7 @@ class SignUpUser extends React.Component{
             name='password' value={this.state.password}/><br></br>
             <label></label>imageUrl<br></br>
             <input type="text"  onChange={this.handleChange.bind(this)}
-            name='image' value={this.state.image}/><br></br>
+            name='imageUrl' value={this.state.image}/><br></br>
             <label></label>Declare your key<br></br>
             <input type="new-password"  onChange={this.handleChange.bind(this)}
             name='key' value={this.state.key}/><br></br>
