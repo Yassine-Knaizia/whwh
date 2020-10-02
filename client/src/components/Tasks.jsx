@@ -8,7 +8,11 @@ class Tasks extends React.Component {
       allEmployees: [],
       taskForEmployee: "",
       nameOfEmloyee: "",
+      newEmploye:"",
+      fire : "" ,
+      archive : []
     };
+    this.getAllArchive = this.getAllArchive.bind(this)
     this.handleChange = this.handleChange.bind(this);
     this.getAllEmployees = this.getAllEmployees.bind(this);
   }
@@ -23,24 +27,56 @@ class Tasks extends React.Component {
       nameOfEmloyee: this.state.nameOfEmloyee,
     });
   }
+  fireEmployee(){
+    axios.post("/api/user/fire" , {newF : this.state.fire}) 
+  }
+  addEmployee(){
+    axios.post("/api/user/add" , {newE : this.state.newEmploye})
+  }
+  
   // get the list of the employees from the database
   getAllEmployees() {
     $.ajax({
-      url: `/api/users/employee`,
+      url: "/api/users/employee",
       type: "get",
       success: (res) => {
         this.setState({ allEmployees: res });
+        console.log(res)
       },
     });
   }
+
+  getAllArchive() {
+    $.ajax({
+      url: "/api/users/archive",
+      type: "get",
+      success: (res) => {
+        console.log('this is archive' , res)
+        // this.setState({ archive: res });
+        
+      },
+    });
+  }
+  // async getAllArchive(){
+   
+  //     const data =await fetch("/api/users/archive");
+  //   let archiive= await  data.json();
+  //   console.log(archiive)
+    
+    
+  // }
   componentWillMount() {
+    this.getAllArchive()
+    this.addEmployee()
+    this.getAllArchive()
     this.getAllEmployees();
   }
   render() {
+    console.log(this.state)
     var employeesList = [];
     for (var i = 0; i < this.state.allEmployees.length; i++) {
       employeesList.push(
-        <option key={i}>{this.state.allEmployees[i].name}</option>
+        <option key={i}>{this.state.allEmployees[i]}</option>
       );
     }
     return (
@@ -70,6 +106,16 @@ class Tasks extends React.Component {
         </div>
         <div className="companyTodo">
           <p>EMPTY DIV HERE</p>
+        </div>
+        <div>
+          <h3>add new employee</h3>
+          <input name="newEmploye" onChange={this.handleChange}></input>
+          <button onClick={this.addEmployee.bind(this)}>add one</button>
+        </div>
+        <div>
+          <h3>fire employe</h3>
+          <input name="fire" onChange={this.handleChange}></input>
+          <button onClick={this.fireEmployee.bind(this)}>FIRE HIM</button>
         </div>
       </div>
     );

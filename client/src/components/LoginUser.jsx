@@ -23,7 +23,7 @@ class LoginUser extends React.Component {
   }
   send() {
     axios.post("/login", this.state).then((res) => {
-      axios.post("/update" , this.state.name)
+      axios.post("/api/user/update" , this.state.name)
     }).then(()=>{
       this.setState({login : true})
     });
@@ -62,7 +62,10 @@ class LoginUser extends React.Component {
 }
 
 function NewNav(){
-  return  <div className="nav-bar"> 
+
+  return <div>
+   <div className="nav-bar"> 
+  
   <nav>
   <a className="logo" href="#"> logo</a>
   <ul className="nav">
@@ -77,6 +80,8 @@ function NewNav(){
       </Link>
   </ul>
 </nav>
+</div>
+<h1>hello to our task maneger</h1>
 </div>
 }
 export default LoginUser;
