@@ -14,7 +14,7 @@ const CompanySchema = new mongoose.Schema(
         todo: String,
       },
     ],
-    type: String,
+    type: { type: String, default: "company" },
   },
   {
     timestamps: true,
