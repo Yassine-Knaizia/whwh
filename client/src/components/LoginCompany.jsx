@@ -27,6 +27,8 @@ class LoginCompany extends React.Component {
           axios.post("/api/user/update" , this.state.name)
         }).then(()=>{
           this.setState({login : true})
+        }).catch(() => {
+          alert('wrong password')
         });
       }
       render() {
