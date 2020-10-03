@@ -40,8 +40,7 @@ class Tasks extends React.Component {
       url: "/api/users/employee",
       type: "get",
       success: (res) => {
-        this.setState({ allEmployees: res });
-        console.log(res)
+        this.setState({ allEmployees: res })
       },
     });
   }
@@ -51,9 +50,11 @@ class Tasks extends React.Component {
       url: "/api/users/archive",
       type: "get",
       success: (res) => {
-        console.log('this is archive' , res)
-        // this.setState({ archive: res });
-        
+        var arch = [] 
+        for(var i = 0 ; i < res.length ; i++){
+        arch.push(<li key={i}>to {res[i].name} : {res[i].todo}</li>)
+        }
+        this.setState({ archive: arch });
       },
     });
   }
@@ -72,13 +73,14 @@ class Tasks extends React.Component {
     this.getAllEmployees();
   }
   render() {
-    console.log(this.state)
     var employeesList = [];
     for (var i = 0; i < this.state.allEmployees.length; i++) {
       employeesList.push(
         <option key={i}>{this.state.allEmployees[i]}</option>
       );
     }
+    console.log("helloo " ,this.state.archive)
+
     return (
       <div>
         <div className="Orders">
@@ -105,7 +107,9 @@ class Tasks extends React.Component {
           </p>
         </div>
         <div className="companyTodo">
-          <p>EMPTY DIV HERE</p>
+          <ul>
+            {this.state.archive}
+          </ul>
         </div>
         <div>
           <h3>add new employee</h3>
