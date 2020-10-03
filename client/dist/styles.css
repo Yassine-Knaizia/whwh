@@ -1,202 +1,264 @@
 body {
-    margin: 0%;
-    min-width: 15%;
-    resize: both;
-    /* background-image: url("https://i1.wp.com/getflowdotcom.wpcomstaging.com/wp-content/uploads/2020/07/online-task-management-software.jpg?fit=1295%2C810&ssl=1"); */
-  }
-  .nav-bar {
-    /* position: fixed; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: rgb(231, 195, 154);
-    width: 100%;
-    height: 10%;
-    z-index: 1;
-    margin-top: 0px;
-  }
-  #liColor{
-    background: #FCFAFA;
+  margin: 0%;
+  min-width: 15%;
+  resize: both;
+  background-image: url("https://news.sap.com/africa/files/2018/06/project-management.jpg");
 }
-  .nav {
-    display: flex;
-    justify-content: right;
-    list-style: none;
-    margin-right: 15%;
-  }
-  .logo {
-    flex: 1 1 auto;
-    margin-left: 10%;
-    float: left;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-    font-size: "35px";
-  }
-  a {
-    margin: 15px;
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  a:hover {
-    color: grey;
-  }
-  .wala {
-    border-radius: 5px;
-    background-color :rgb(233, 233, 230);
-    padding-left: 30%;
-    padding-right: 30%;
-    /* margin-top: 8%; */
-    margin-right: 10%;
-    margin-left: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
-  .chatB {
-    margin: 5px 10%;
-    background-color: #8AA084;
-    border: none;
-    color: white;
-    padding: 4px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: 0.3s;
-  }
-  button:hover {
-    opacity: 1;
-  }
-  .landB{
-      /* margin-top: 4%; */
-      margin-left: 40%;
-      background-color: #E7994F;
-      border: none;
-      color: white;
-      padding: 7px 30px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 25px;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-  }
-  .landH{
-      margin-top: 5%;
-      text-align: center;
-  }
-  .landP{
-      text-align: center;
-      letter-spacing: 3px;
-      text-indent: 50px;
-      text-transform: uppercase;
-      text-shadow: 1px 1px;
-  }
-  .myTodo, .todoList, .companyTodo, .userNameList {
-    margin-bottom: 3%;
-    margin-left: 5%;
-    width:20%;
-    text-align: center;
-    float: center;
-    top:50%;
-    border-style: inset;
-    border-width: 1%;
-    border-color:red;
-    padding-top: 1%;
-    padding-bottom: 2%;
-    padding-right: 9%;
-    padding-left: 12%;
-  }
-  .friendAdd, .Orders {
-    margin-top: 3%;
-    margin-bottom: 3%;
-    margin-left: 5%;
-    width:70%;
-    text-align: center;
-    position: center;
-    top:50%;
-    border-style: inset;
-    border-width: 1%;
-    border-color:red;
-    padding-top: 1%;
-    padding-bottom: 2%;
-    padding-right: 11%;
-    padding-left: 10%;
-  }
-  .login{
-    align-content: center;
-    border-radius: 5px;
-    background-color :rgb(233, 233, 230);
-  }
-  #label{
-    padding: 12px 12px 12px 0;
-      display: inline-block;
-      text-align: center;
-      margin-left: 30%;
-  }
-  #inp{
-    margin-left: 30%;
-    /* margin-right: 40%; */
-    width: 50%;
-    padding: 12px 20px;
-    /* margin: 8px 40px; */
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  #but{
-    margin-left: 50%;
-    background-color: #E6B282;
-    border: none;
-    color: white;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  #c{
-    margin-left: 40%;
-    background-color: #E6B282;
-    border: none;
-    color: white;
-    padding: 7px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  #loginP{
-    text-align: center;
-  }
-  #userNameListTodo {
-    border: 3px solid blue;
-    width: 40%;
-  }
-  /* input {
+
+.nav-bar {
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(231, 195, 154);
+  width: 100%;
+  height: 10%;
+  z-index: 1;
+  margin-top: 0px;
+}
+.nav {
+  display: flex;
+  justify-content: right;
+  list-style: none;
+  margin-right: 15%;
+}
+#liColor,
+#liColorC {
+  background: #fcfafa;
+}
+.logo {
+  flex: 1 1 auto;
+  margin-left: 10%;
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: "35px";
+}
+
+a {
+  margin: 15px;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+a:hover {
+  color: grey;
+}
+.wala {
+  border-radius: 5px;
+  background-color: rgb(233, 233, 230);
+  padding-left: 30%;
+  padding-right: 30%;
+  /* margin-top: 8%; */
+  margin-right: 10%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.chatD {
+  text-align: center;
+}
+/* #update{
+  
+  height: 150px;
+ background-color: gray;
+} */
+.chatB {
+  margin: 5px 10%;
+  background-color: #8aa084;
+  border: none;
+  color: white;
+  padding: 4px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+button:hover {
+  opacity: 1;
+}
+.landB1 {
+  margin-right: 5%;
+  margin-left: 30%;
+}
+.landB1,
+.landB2 {
+  margin-top: 3%;
+  background-color: #e7994f;
+  border: none;
+  color: white;
+  padding: 2px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.landH {
+  margin-top: 5%;
+  text-align: center;
+}
+.landP {
+  text-align: center;
+  letter-spacing: 3px;
+  text-indent: 50px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px;
+}
+.myTodo,
+.todoList,
+.companyTodo,
+.userNameList {
+  margin-bottom: 3%;
+  margin-left: 5%;
+  width: 20%;
+  text-align: center;
+  float: center;
+  top: 50%;
+  border-style: inset;
+  border-width: 1%;
+  background-color: rgb(243, 243, 240);
+  padding-top: 1%;
+  padding-bottom: 2%;
+  padding-right: 9%;
+  padding-left: 12%;
+}
+.friendAdd,
+.Orders,
+#update {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 5%;
+  width: 70%;
+  text-align: center;
+  position: center;
+  top: 50%;
+  border-style: inset;
+  border-width: 1%;
+  background-color: rgb(243, 243, 240);
+  padding-top: 1%;
+  padding-bottom: 2%;
+  padding-right: 11%;
+  padding-left: 10%;
+}
+.login {
+  /* align-content: center; */
+  border-radius: 5px;
+  background-color: rgb(233, 233, 230);
+  margin-left: 35%;
+  margin-top: 10%;
+  width: 400px;
+}
+.loginUser {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#signUpCom {
+  margin: 0;
+  padding: 0;
+}
+
+#label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  text-align: center;
+  margin-left: 20%;
+  position: left;
+}
+#inp {
+  margin-left: 30%;
+  /* margin-right: 40%; */
+  width: 50%;
+  padding: 12px 20px;
+  /* margin: 8px 40px; */
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#but {
+  margin-left: 150px;
+  background-color: #e6b282;
+  border: none;
+  color: white;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#c {
+  margin-left: 40%;
+  background-color: #e6b282;
+  border: none;
+  color: white;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#loginP {
+  text-align: center;
+}
+#userNameListTodo {
+  border: 3px solid blue;
+  width: 40%;
+}
+
+#msgArea {
+  width: 90%;
+  height: 100px;
+}
+/* input {
     border: none;
     border-bottom: 2px solid blue;
   }  */
-  /* image {
+
+  img {
     border-radius: 50%;
-  } */
-  @media screen and (min-width: 100px) {
-    input, h1, select, div {
-      width: 100%;
-    }
+    height: 50px;
+    margin-left: 35px;
+}
+.moveR{
+ 
+    margin-top: 5%;
+    margin-left: 40px;
+
+}
+.imgBlock{
+  margin-bottom: 100px;
+  background-color: gray;
+  color: wheat;
+}
+
+@media screen and (max-width: 600px) {
+  input,
+  h1,
+  select,
+  div {
+    width: 100%;
   }
+
+  .login {
+    margin-left: 5%;
+  }
+}

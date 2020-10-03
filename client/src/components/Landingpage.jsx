@@ -28,17 +28,17 @@ class Land extends React.Component {
       <div>
         {!this.state.goToCompanyLogin && !this.state.goToUserLogin ? (
           <div>
-            <h1 className="landH">Online Task Managing</h1>
+            <h1 className="landH">Online Task Manager</h1>
             <p className="landP">
               Plan and schedule your workflow online. Increase your team
               efficiency.
             </p>
             <br />
-            <button className="landB" onClick={this.toUserLogin}>
-              Get Start as user
+            <button className="landB1" onClick={this.toUserLogin}>
+            Join as User
             </button>
-            <button className="landB" onClick={this.toCompanyLogin}>
-              Get Start as Company
+            <button className="landB2" onClick={this.toCompanyLogin}>
+              Join as Company
             </button>
           </div>
         ) : this.state.goToUserLogin ? (

@@ -31,29 +31,35 @@ class LoginCompany extends React.Component {
       }
       render() {
         return (
-          <div>
+          <div className="login">
             {!this.state.login ?
           <div>{!this.state.signUp ? 
               <div>
-            <p>User's Login</p>
-            <label>Enter your name</label>
-            <input className="form-controle"
+            <label id="label">Enter your name</label>
+            <input id="inp"
               type="text"
-              name="name"
+                    name="name"
+                    placeholder="Your name"
               value={this.state.name}
               onChange={this.handleChange.bind(this)}
             />
-            <label>enter your password</label>
-            <input
+            <label id="label">Enter your password</label>
+                  <input
+                     id="inp"
               type="password"
-              name="password"
+                    name="password"
+                    placeholder="password"
               value={this.state.password}
               onChange={this.handleChange.bind(this)}
-            />
-            <button onClick={this.send.bind(this)}>Login</button>
-            <p>
-              if you dont have an acount
-              <a onClick={this.goToSingUp.bind(this)}>sign up</a>
+                  />
+                  <br />
+                  <br/>
+                  <button id="but" onClick={this.send.bind(this)}>Login</button>
+                  
+                  
+            <p id="loginP">
+            Create your account 
+              <a onClick={this.goToSingUp.bind(this)}>Sign up</a>
             </p>
             </div> : <SignUpCompany/> }
           </div> : <Tasks/> }

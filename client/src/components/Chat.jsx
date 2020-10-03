@@ -8,12 +8,12 @@ class Chat extends React.Component {
     this.state = {
       msg: "",
       messages: [],
-      connected : ""
+      connected: "",
     };
     this.sendMessage = this.sendMessage.bind(this);
     this.handlechange = this.handlechange.bind(this);
     this.getAllMessages = this.getAllMessages.bind(this);
-    this.getConnected = this.getConnected.bind(this)
+    this.getConnected = this.getConnected.bind(this);
   }
   // get all the messages from database
   getAllMessages() {
@@ -21,12 +21,11 @@ class Chat extends React.Component {
       url: `/api/users/getMessages`,
       type: "get",
       success: (res) => {
-        this.setState({ messages: res })
-        
+        this.setState({ messages: res });
       },
     });
   }
-  // // get the person who is connected 
+  // // get the person who is connected
   getConnected() {
     $.ajax({
       url: `/api/users/getConnected`,
@@ -34,15 +33,15 @@ class Chat extends React.Component {
       success: (res) => {
         this.setState({ connected: res });
         // console.log('this is you ===>',this.state.connected)
-        console.log("this is sparta" , this.state.connected)
+        console.log("this is sparta", this.state.connected);
       },
     });
   }
   // invoke getAllMessages in componentWillMount so you don't have to reload the
-  // page every time you add message 
+  // page every time you add message
   componentWillMount() {
     this.getAllMessages();
-    this.getConnected() 
+    this.getConnected();
   }
   // save one message in the data base
   sendMessage() {
@@ -52,7 +51,7 @@ class Chat extends React.Component {
   }
   // save every change of the input in the state
   handlechange(e) {
-    var msgWithName = this.state.connected + ":" + e.target.value 
+    var msgWithName = this.state.connected + ":" + e.target.value;
     this.setState({ [e.target.name]: msgWithName });
   }
   render() {
@@ -62,16 +61,22 @@ class Chat extends React.Component {
       console.log("this is a msg ======> ", this.state.messages[i].msg);
       listOfMessages.push(<li key={i}> {this.state.messages[i].msg}</li>);
     }
-    // return the chat 
+    // return the chat
     return (
       <div>
-        <div className="chatArea"></div>
-        <div className="chatText">
-          <textarea name="msg" onChange={this.handlechange}></textarea>
-          <button value="Send" onClick={this.sendMessage}>
-            Send
-          </button>
-          <ul>{listOfMessages}</ul>
+        <br />
+        <br />
+        <br />
+        <div className="wala">
+          <div className="chatArea"></div>
+          <div className="chatD">
+            <h3>Your Messages Here</h3>
+            <textarea id="msgArea" name="msg" onChange={this.handlechange}></textarea>
+            <button className="chatB" value="Send" onClick={this.sendMessage}>
+              Send
+            </button>
+            <ul>{listOfMessages}</ul>
+          </div>
         </div>
       </div>
     );

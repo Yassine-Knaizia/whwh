@@ -31,13 +31,13 @@ app.post("/api/users/sendMessage", (req, res) => {
   });
 });
 
-app.post("/api/user/add",(req , res)=>{
+app.post("/api/user/add", (req, res) => {
   console.log(req.body)
-  Name.findOne({key : "abc"} , function(err , data){
-    Company.updateOne({name : data.hashem} , { $push: { employee: req.body.newE } },
+  Name.findOne({ key: "abc" }, function (err, data) {
+    Company.updateOne({ name: data.hashem }, { $push: { employee: req.body.newE } },
       function (err, result) {
         if (err) console.log(err);
-        res.send("check")
+        res.send(req.body.newE)
       })
   })
 })
