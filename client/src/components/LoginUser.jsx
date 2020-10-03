@@ -29,6 +29,8 @@ class LoginUser extends React.Component {
       })
       .then(() => {
         this.setState({ login: true });
+      }).catch(() => {
+        alert('wrong password')
       });
   }
   render() {
