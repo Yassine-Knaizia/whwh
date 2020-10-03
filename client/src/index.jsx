@@ -6,6 +6,9 @@ import Chat from './components/Chat.jsx'
 import Land from './components/Landingpage.jsx'
 
 import { BrowserRouter as Router , Switch , Route } from 'react-router-dom'
+
+// It's better to seperate your imports (the modules together, and then your components)
+
 class App extends React.Component{
     constructor(props){
         super(props)

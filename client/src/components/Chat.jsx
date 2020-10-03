@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+// Remove the unused imports to avoid slowing down your application
 
 class Chat extends React.Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class Chat extends React.Component {
   // get all the messages from database
   getAllMessages() {
     $.ajax({
-      url: `/api/users/getMessages`,
-      type: "get",
+      url: `/api/users/getMessages`, // You don't need to use a litteral with backticks `` if you don't have variables
+      type: "get", // Normally, we write GET in capital letters
       success: (res) => {
         this.setState({ messages: res });
       },
@@ -28,12 +29,12 @@ class Chat extends React.Component {
   // // get the person who is connected
   getConnected() {
     $.ajax({
-      url: `/api/users/getConnected`,
-      type: "get",
+      url: `/api/users/getConnected`, // Same thing as the other request
+      type: "get", // Same thing as the other request
       success: (res) => {
         this.setState({ connected: res });
         // console.log('this is you ===>',this.state.connected)
-        console.log("this is sparta", this.state.connected);
+        console.log("this is sparta", this.state.connected); // XD
       },
     });
   }
@@ -46,7 +47,7 @@ class Chat extends React.Component {
   // save one message in the data base
   sendMessage() {
     axios.post("/api/users/sendMessage", this.state).then(() => {
-      this.componentWillMount();
+      this.componentWillMount(); // Life cycle methods are made to be called automatically when we something happens to the component, we don't call them manually
     });
   }
   // save every change of the input in the state
