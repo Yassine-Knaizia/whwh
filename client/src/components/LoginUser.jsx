@@ -3,6 +3,7 @@ import axios from "axios";
 import SignUpUser from "./SignUpUser.jsx";
 import Home from "./Home.jsx";
 import { Link, link } from "react-router-dom";
+/** What is "link" you're importing */
 
 class LoginUser extends React.Component {
   constructor() {
@@ -14,6 +15,7 @@ class LoginUser extends React.Component {
       login: false,
     };
   }
+  /** Careful with the names, SignUp */
   goToSingUp() {
     var changeSignUp = !this.state.signUp;
     this.setState({ signUp: changeSignUp });

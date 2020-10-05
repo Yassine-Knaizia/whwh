@@ -11,6 +11,11 @@ class Home extends React.Component {
     };
     this.getAllCoworkers = this.getAllCoworkers.bind(this);
   }
+
+  /** Naming the api endpoints !! We always use nouns and the '/' indicates the hirearchy
+   * Check the second section of this blog https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+   */
+  
   //get all the coworkers from database
   getAllCoworkers() {
     $.ajax({
@@ -45,6 +50,12 @@ class Home extends React.Component {
   }
   render() {
     var friendList = [];
+    {/** Using normal unordered lists is not cool :( */}
+    {/** Your variable names should be meaningful and follow conventions: 
+    - coworkersList instead of listOfCoworker
+    - myTodos instead of todosMe
+    - ...
+    */}
     //add the coworker to list with their images
     for (var i = 0; i < this.state.listOfCoworker.length; i++) {
       friendList.push(

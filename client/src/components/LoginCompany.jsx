@@ -4,6 +4,8 @@ import SignUpCompany from "./SignUpCompany.jsx";
 import { Link, link } from 'react-router-dom'
 import Tasks from "./Tasks.jsx"
 class LoginCompany extends React.Component {
+
+  /** Choose a consistent way of doing things. Axios or jQuery. */
  
     constructor() {
         super();
@@ -31,6 +33,9 @@ class LoginCompany extends React.Component {
           alert('wrong password')
         });
       }
+
+      /** If you have problems with writing readable code, use tools like prettier and eslint. They'll do it for you */
+
       render() {
         return (
           <div className="login">

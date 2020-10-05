@@ -6,6 +6,8 @@ const Name = require("../database/name.js");
 const Chat = require("../database/chatschema.js");
 const bcrypt = require('bcryptjs');
 
+/** Finish all the imports and then start the business logic */
+
 const app = express();
 const PORT = 3000;
 const path = require("path");
@@ -14,6 +16,10 @@ const { update } = require("../database/name.js");
 app.use(express.static("client/dist"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+/** Naming the api endpoints !! We always use nouns and the '/' indicates the hirearchy
+   * Check the second section of this blog https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+   */
 
 app.get("/api/users/getMessages", function (req, res) {
   Chat.find({}, function (error, result) {
@@ -266,6 +272,7 @@ app.post("/signup/company", async (req, res) => {
     res.send(newCompany)
   } catch (error) {
     res.status(404).send("UNAUTHORIZED")
+    /** Unauthorized error code is 401 */
   }
 });
 

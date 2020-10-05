@@ -1,3 +1,5 @@
+/** In css, we always try to use classes. Avoid Ids!!!*/ 
+
 body {
   margin: 0%;
   min-width: 15%;
